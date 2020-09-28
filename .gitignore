@@ -9,4 +9,4 @@
 .history/
 
 # User Defined Files
-botconfig.json
+/botconfig.json
