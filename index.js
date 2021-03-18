@@ -49,7 +49,7 @@ bot.on("message", async message => {
 });
 
 
-
+// Simple Listener events
 bot.on('message', message => {
 
 
@@ -116,17 +116,28 @@ bot.on('message', message => {
 
     else if(message.content.includes("You're damn right"))
 
-        message.channel.send('Hah! Got eem!');
+        message.channel.send('Hah! Got eem!')
 
+    }
+)
 
+// Word blacklisting attempts
+bot.on('message', message => {
 
-    else if(message.content.toLowerCase().includes("kitten")){
+    let blacklisted = ['kitten', 'cummies']; // Blacklisted words
+
+    //Checking for the word
+    let foundInText = false;
+    for (var i in blacklisted) {  //Loops through each blacklisted item
+        if (message.content.toLowerCase().includes(blacklisted[i].toLowerCase())) foundInText = true;
+    } //Checks if the current item is included in the message (case insensitive)
+
+    //If the word is found, delete it and warn the user
+    if (foundInText) {
         message.delete();
-        message.channel.send("None of that!")
+        message.channel.send('None of that!');
     }
 })
-
-
 
 bot.registry.registerGroup('simple','Simple');
 
