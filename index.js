@@ -135,7 +135,10 @@ bot.on('message', message => {
     //If the word is found, delete it and warn the user
     if (foundInText) {
         message.delete();
-        message.channel.send('None of that!');
+        message.channel.send('None of that!')
+            .then(msg => {
+                message.delete({timeout: 10000}) // Auto delete message after 10 seconds in milliseconds
+            });
     }
 })
 
