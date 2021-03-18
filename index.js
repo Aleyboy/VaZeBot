@@ -136,7 +136,7 @@ bot.on('message', message => {
     if (foundInText) {
         message.delete();
         message.channel.send('None of that!')
-            .then(sentMessage => sentMessage.delete({ timeout: 10000 })) // Auto delete message after 10 seconds in milliseconds
+            .then(sentMessage => sentMessage.delete(10000)) // Auto delete message after 10 seconds in milliseconds
             .catch(console.error)
     }
     
