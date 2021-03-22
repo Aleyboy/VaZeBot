@@ -13,9 +13,9 @@ class ArmaModsCommand extends commando.Command
         });
     }
 
-    async run(message, args, Discord)
+    async run(message, args, commando)
     {
-        const armaEmbed = new Discord.MessageEmbed()
+        const armaEmbed = new commando.MessageEmbed()
         .setColor('#f54242')
         .setTitle('VaZe Clan Arma 3 Mod Collection')
         .setURL('https://steamcommunity.com/sharedfiles/filedetails/?id=2432475640')
