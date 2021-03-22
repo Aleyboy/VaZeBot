@@ -1,29 +1,32 @@
-const { DiscordAPIError } = require('discord.js');
 const commando = require('discord.js-commando');
+const RichEmbed = require('discord.js');
 
-class ArmaModsCommand extends commando.Command
-{
-    constructor(client)
-    {
-        super(client,{
+module.exports = class EmbedCommand extends Command {
+    constructor(client) {
+        super(client, {
             name: 'arma',
             group: 'simple',
             memberName: 'arma',
-            description: 'Sends the Arma 3 mod collection link to chat.'
+            description: 'Sends the Arma 3 mod collection link',
+            examples: ['embed testing'],
+            args:[
+                {
+                    key: 'text',
+                    prompt: 'what text would you like the bot to embed',
+                    type: 'string'
+                }
+            ]
         });
     }
 
-    async run(message, args, commando)
-    {
-        const armaEmbed = new commando.MessageEmbed()
-        .setColor('#f54242')
-        .setTitle('VaZe Clan Arma 3 Mod Collection')
-        .setURL('https://steamcommunity.com/sharedfiles/filedetails/?id=2432475640')
-        .setDescription('This link is the VaZe Clan Arma Mod Collection')
-        .setFooter('Make sure you are up to date!');
-
-        message.channel.send(armaEmbed)
+    run(msg, args) {
+        const { text } =args;
+        const embed = new RichEmbed()
+            .setTitle('VaZe Clan Arma 3 Mod Collection')
+            .setDescription('This link is the VaZe Clan Arma Mod Collection')
+            .setColor('#f54242')
+            .setURL('https://steamcommunity.com/sharedfiles/filedetails/?id=2432475640')
+            .setFooter('Make sure you are up to date!');
+        return msg.embed(embed);
     }
-}
-
-module.exports = ArmaModsCommand;
+};

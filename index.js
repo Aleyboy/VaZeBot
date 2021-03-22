@@ -2,11 +2,7 @@ const botconfig = require("./botconfig.json");
 
 const Commando = require("discord.js-commando");
 
-
-
 const bot = new Commando.Client();
-
-
 
 bot.on("ready", async () => {
 
@@ -35,14 +31,6 @@ bot.on("message", async message => {
     let args = messageArray.slice(1);
 
 
-
-    if(cmd === `${prefix}urmumgay`){
-
-        return message.channel.send("no u");
-
-        
-
-    }
 
 
 
